@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import styles from "./page.module.css";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { newData } from "./utils/newData";
+import { data } from "./types/types";
 // import {data} from "./utils/csvjson"
 
 export default function Home() {
@@ -11,7 +12,7 @@ export default function Home() {
 
   const userArray = userInput.split(/\s/);
 
-  function handleInputUpdate(e) {
+  function handleInputUpdate(e: ChangeEvent<HTMLTextAreaElement>) {
     if (userArray.length > 2) {
       setUserInput(e.target.value);
     } else {
@@ -19,7 +20,7 @@ export default function Home() {
     }
   }
 
-  const search = (arr, str) => {
+  const search = (arr: data[], str: string) => {
     return arr.find((obj) => Object.values(obj).includes(str));
   };
 
