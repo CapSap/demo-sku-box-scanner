@@ -43,6 +43,11 @@ export default function Home() {
 
   console.log("isgood func", isGood(userInput));
 
+  function handleClear() {
+    setUserInput("");
+    document.getElementById("skus")?.focus();
+  }
+
   return (
     <div id="container">
       <textarea
@@ -54,7 +59,7 @@ export default function Home() {
         }}
       ></textarea>
       <p id="message">{isGood(userInput) ? "Box is good" : "bad"}</p>
-      <button id="clearInputButton" onClick={() => setUserInput("")}>
+      <button id="clearInputButton" onClick={() => handleClear()}>
         Clear input
       </button>
     </div>
