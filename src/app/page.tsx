@@ -51,6 +51,7 @@ export default function Home() {
   return (
     <div id="container">
       <textarea
+        inputMode="none"
         name="skus"
         id="skus"
         value={userInput}
