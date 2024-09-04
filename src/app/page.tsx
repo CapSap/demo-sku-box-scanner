@@ -27,26 +27,27 @@ export default function Home() {
   function isGood(input: string): boolean {
     const skuObj = search(newData, userArray[0]);
 
-    console.log("found", skuObj);
-
     if (!skuObj) {
       return false;
     }
 
     const secondSearch = search([skuObj], userArray[1]);
 
-    console.log("2nd search", secondSearch);
-
     return skuObj && secondSearch ? true : false;
   }
-  console.log(newData);
-
-  console.log("isgood func", isGood(userInput));
 
   function handleClear() {
     setUserInput("");
     document.getElementById("skus")?.focus();
   }
+
+  console.log("ua", userArray);
+
+  const location = newData.find((item) =>
+    Object.values(item).includes(userArray[0])
+  )?.box;
+
+  console.log("loc", location);
 
   return (
     <div id="container">
@@ -60,6 +61,9 @@ export default function Home() {
         }}
       ></textarea>
       <p id="message">{isGood(userInput) ? "Box is good" : "bad"}</p>
+      {location ? (
+        <p id="location">Product is located in box #{location}</p>
+      ) : null}
       <button id="clearInputButton" onClick={() => handleClear()}>
         Clear input
       </button>
